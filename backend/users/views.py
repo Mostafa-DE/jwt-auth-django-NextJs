@@ -1,10 +1,20 @@
 import datetime
 import jwt
+from django.http import JsonResponse
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import User
 from .serializers import UserSerializer
+
+
+# @method_decorator(ensure_csrf_cookie, name="dispatch")
+# class GetCSRFToken(APIView):
+#     @staticmethod
+#     def get(request):
+#         return JsonResponse({'success': 'CSRF cookie set'})
 
 
 class RegisterView(APIView):
